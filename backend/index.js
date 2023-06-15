@@ -1,4 +1,6 @@
 import mysql from "mysql";
+import express from "express";
+import cors from "cors";
 
 const express = require("express");
 
@@ -16,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/games", (req, res) => {
   const seek = "SELECT * FROM games";
