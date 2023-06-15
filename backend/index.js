@@ -45,11 +45,22 @@ app.post("/games", (req, res) => {
   });
 });
 
-app.delete("/books/:id", (req, res) => {
+app.delete("/games/:id", (req, res) => {
   const gameId = req.params.id;
-  const seek = "DELETE FROM books WHERE id = ?";
+  const seek = "DELETE FROM games WHERE id = ?";
 
   db.query(seek, [gameID], (err, data) => {
+    if (err) return res.json(data);
+    return res.json("Le jeu a été ajouté !");
+  });
+});
+
+app.put("/games/:id", (req, res) => {
+  const gameId = req.params.id;
+  const seek =
+    "UPDATE games  SET `title` = ?, `description` = ?, `price` = ?, `availability` = ? WHERE id = ?";
+
+  db.query(seek, [...values, gameId], (err, data) => {
     if (err) return res.json(data);
     return res.json("Le jeu a été ajouté !");
   });

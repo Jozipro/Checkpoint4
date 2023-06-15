@@ -36,10 +36,12 @@ function Games() {
             <p>{game.description}</p>
             <span>{game.price}</span>
             <span>{game.availability}</span>
-            <button className="update" onClick={() => handleDelete(game.id)}>
-              Mettre à jour
+            <button className="delete" onClick={() => handleDelete(game.id)}>
+              Supprimer
             </button>
-            <button className="delete">Supprimer</button>
+            <button className="update">
+              <Link to={`/update/${game.id}`}>Mise à jour</Link>
+            </button>
           </div>
         ))}
       </div>

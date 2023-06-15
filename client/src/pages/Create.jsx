@@ -59,7 +59,9 @@ function Create() {
         name="availability"
       />
 
-      <button onClick={handleClick}>Ajouter</button>
+      <button className="formButton" onClick={handleClick}>
+        Ajouter
+      </button>
     </div>
   );
 }
