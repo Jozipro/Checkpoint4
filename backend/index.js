@@ -1,17 +1,20 @@
-import mysql from "mysql";
-import express from "express";
-import cors from "cors";
-
+const mysql = require("mysql");
 const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const app = express();
 
-const db = mysql
-  .createConnection
-  //co env, placer dans ignore
-  ();
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+});
 
-const port = 5000; //replacer dans env
+const port = process.env.PORT;
 
 app.get("/", (req, res) => {
   res.json("Bonjour");
@@ -49,7 +52,7 @@ app.delete("/games/:id", (req, res) => {
   const gameId = req.params.id;
   const seek = "DELETE FROM games WHERE id = ?";
 
-  db.query(seek, [gameID], (err, data) => {
+  db.query(seek, [gameId], (err, data) => {
     if (err) return res.json(data);
     return res.json("Le jeu a été ajouté !");
   });
@@ -66,6 +69,10 @@ app.put("/games/:id", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Connected to backend on port ${port}`);
+app.listen(port, (err) => {
+  if (err) {
+    console.error("Something bad happened");
+  } else {
+    console.log(`Server is listening on ${port}`);
+  }
 });
