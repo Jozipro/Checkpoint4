@@ -45,6 +45,16 @@ app.post("/games", (req, res) => {
   });
 });
 
+app.delete("/books/:id", (req, res) => {
+  const gameId = req.params.id;
+  const seek = "DELETE FROM books WHERE id = ?";
+
+  db.query(seek, [gameID], (err, data) => {
+    if (err) return res.json(data);
+    return res.json("Le jeu a été ajouté !");
+  });
+});
+
 app.listen(port, () => {
   console.log(`Connected to backend on port ${port}`);
 });

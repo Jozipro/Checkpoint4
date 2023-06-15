@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Games from "./pages/Games";
 import Create from "./pages/Create";
 import Update from "./pages/Update";
-import "./style.css";
+import "../src/style.css";
 
 function App() {
   return (

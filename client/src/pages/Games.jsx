@@ -16,6 +16,15 @@ function Games() {
     fetchAllGames();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete("http://localhost:8800/games/" + id);
+      window.location.reload(); // ou redux ?
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <h1>Joe's Games Storage</h1>
@@ -27,6 +36,10 @@ function Games() {
             <p>{game.description}</p>
             <span>{game.price}</span>
             <span>{game.availability}</span>
+            <button className="update" onClick={() => handleDelete(game.id)}>
+              Mettre à jour
+            </button>
+            <button className="delete">Supprimer</button>
           </div>
         ))}
       </div>

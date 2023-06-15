@@ -1,0 +1,45 @@
+.App {
+  height: 100vh;
+  padding: 0px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.games {
+  display: flex;
+}
+
+.game {
+  flex: 1;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  background-color: black;
+}
+
+.delete {
+  border: none;
+  padding: 3px 6px;
+  background-color: white;
+  cursor: pointer;
+  border: 1px solid;
+  color: red;
+}
+
+.update {
+  border: none;
+  padding: 3px 6px;
+  background-color: white;
+  cursor: pointer;
+  border: 1px solid;
+  color: blue;
+}
